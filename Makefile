@@ -1,14 +1,14 @@
 run:
-	./api
+	./src/api
 
 compile: clean
-	nim c -d:release api.nim 
+	nim c -d:release ./src/api.nim 
 
 clean:
-	rm -rf api
+	rm -rf ./src/api
 
 docker:
-	docker build -t nim-jester-api .
+	docker build -t nim-jester-api ./src
 
 rundocker:
 	docker run -p 5000:5000 nim-jester-api
