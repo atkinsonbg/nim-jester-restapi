@@ -11,3 +11,4 @@ bin           = @["api"]
 
 requires "nim >= 1.2.4"
 requires "https://github.com/dom96/jester == 0.4.3"
+requires "https://github.com/status-im/nim-chronicles == 0.9.2"
