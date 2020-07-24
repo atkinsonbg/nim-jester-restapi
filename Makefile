@@ -8,7 +8,7 @@ clean:
 	rm -rf ./src/api
 
 docker:
-	docker build -t nim-jester-api ./src
+	docker build -t nim-jester-api .
 
 rundocker:
 	docker run -p 5000:5000 nim-jester-api
