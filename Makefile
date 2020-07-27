@@ -1,8 +1,8 @@
-run:
+run: clean compile
 	./src/api
 
 compile: clean
-	nim c -d:release ./src/api.nim 
+	nim c -d:release -d:ssl ./src/api.nim 
 
 clean:
 	rm -rf ./src/api

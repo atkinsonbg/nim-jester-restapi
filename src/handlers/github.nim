@@ -1,16 +1,20 @@
-import marshal, chronicles, httpclient, json
+import marshal, chronicles, httpclient, json, strformat
 
 type
   GitHubUser = object
     name: string
+    repos: seq[string]
 
 proc get_user*(name: string): string =
     info "get user pinged"
 
     var client = newHttpClient()
-    var response = client.request("https://api.github.com/users/atkinsonbg/repos")
+    var response = client.request(fmt"https://api.github.com/users/{name}/repos")
     var jsonBody = parseJson(response.body)
-    echo $(jsonBody[0]["name"])
 
     var github_user = GitHubUser(name: name)
+
+    for repo in jsonBody:
+        github_user.repos.add(repo["name"].getStr())
+
     return $$github_user
