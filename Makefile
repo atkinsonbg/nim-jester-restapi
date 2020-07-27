@@ -12,3 +12,6 @@ docker:
 
 rundocker:
 	docker run -p 5000:5000 nim-jester-api
+
+test:
+	nim c -r tests/test_api.nim
